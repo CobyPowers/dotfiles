@@ -1,0 +1,13 @@
+require("default.hypr.animations")
+require("default.hypr.autostart")
+require("default.hypr.decorations")
+require("default.hypr.variables")
+require("default.hypr.environment")
+require("default.hypr.inputs")
+require("default.hypr.binds")
+require("default.hypr.misc")
+require("default.hypr.monitors")
+require("default.hypr.windowrules")
+require("default.hypr.workspaces")
+
+require("hypr.noctalia").apply_theme()
