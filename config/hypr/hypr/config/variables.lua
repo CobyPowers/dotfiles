@@ -1,0 +1,5 @@
+TERMINAL = "kitty"
+FILE_MANAGER = "nautilus"
+BROWSER = "librewolf"
+EDITOR = "gnome-text-editor --new-window"
+CALCULATOR = "gnome-calculator"
