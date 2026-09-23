@@ -27,7 +27,7 @@ for config_path in $SCRIPT_DIR/config/*; do
     mkdir -p $HOME/.config/$CONFIG_NAME
   fi
 
-  cp -r $SCRIPT_DIR/config/$CONFIG_NAME $HOME/.config/$CONFIG_NAME
+  cp -r "$SCRIPT_DIR/config/$CONFIG_NAME" "$HOME/.config/$CONFIG_NAME"
 
   # for file_path in $config_path/*; do
   #   FILE_NAME=$(basename $file_path)

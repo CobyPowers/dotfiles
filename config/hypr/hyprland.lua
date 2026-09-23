@@ -1,6 +1,13 @@
-dofile(os.getenv("HOME") .. "/.local/share/dotfiles/default/hypr/bootstrap.lua")
+require("config.animations")
+require("config.autostart")
+require("config.decorations")
+require("config.variables")
+require("config.environment")
+require("config.inputs")
+require("config.binds")
+require("config.misc")
+require("config.monitors")
+require("config.windowrules")
+require("config.workspaces")
 
-require("default.hypr.init")
-
--- For Noctalia Color templates
 require("noctalia").apply_theme()
