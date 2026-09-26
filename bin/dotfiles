@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+set -e
+
+BIN_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
+CMD=$1
+
+if [ $# -gt 1 ]; then
+  shift
+fi
+
+dotfiles_usage() {
+  echo "USAGE: ${BASH_SOURCE[0]} <command> [args...]"
+  echo "COMMANDS:"
+  echo -e "    backup\t\t→ Backs up all preexisting configuration paths found in dotfiles"
+  echo -e "    commit\t\t→ Commits dotfile configuration changes"
+  echo -e "    package\t\t→ Installs & removes system packages and places them in the installed packages file"
+  echo -e "    push\t\t→ Pushes commits to the remote repository"
+}
+
+case $CMD in
+backup)
+  $BIN_DIR/dotfiles-backup "$@"
+  ;;
+commit)
+  $BIN_DIR/dotfiles-commit "$@"
+  ;;
+package)
+  $BIN_DIR/dotfiles-package "$@"
+  ;;
+push)
+  $BIN_DIR/dotfiles-push "$@"
+  ;;
+*)
+  dotfiles_usage
+  ;;
+esac

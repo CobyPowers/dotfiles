@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+set -e
+
+DOTFILES_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." &>/dev/null && pwd)
+
+CMD=$1
+PACKAGE_NAME=$2
+
+package_usage() {
+  echo "USAGE: ${BASH_SOURCE[0]} <command> <package_name>"
+  echo "COMMANDS:"
+  echo -e "    install\t\t→ Installs a new system package and updates the dotfile package list"
+  echo -e "    remove\t\t→ Removes a package and its configurations, updating the dotfile package list"
+}
+
+package_install() {
+  if [ -z "$PACKAGE_NAME" ]; then
+    package_usage
+    exit 1
+  fi
+
+  PACKAGE_FILE="$DOTFILES_DIR/install.packages"
+
+  sudo pacman -S "$PACKAGE_NAME" --noconfirm
+  echo "$PACKAGE_NAME" >>"$PACKAGE_FILE"
+  sort "$PACKAGE_FILE" -o "$PACKAGE_FILE"
+
+  echo "INFO: The package has been installed"
+}
+
+package_remove() {
+  if [ -z "$PACKAGE_NAME" ]; then
+    package_usage
+    exit 1
+  fi
+
+  PACKAGE_FILE="$DOTFILES_DIR/install.packages"
+
+  sudo pacman -Runs "$PACKAGE_NAME" --noconfirm
+  sed -i "/$PACKAGE_NAME/d" $PACKAGE_FILE
+
+  echo "INFO: The package has been removed"
+}
+
+case $CMD in
+install)
+  package_install
+  ;;
+remove)
+  package_remove
+  ;;
+*)
+  package_usage
+  ;;
+esac

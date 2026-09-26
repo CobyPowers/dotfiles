@@ -4,19 +4,30 @@ set -e
 
 remove_if_exists() {
   if pacman -Qs $1 >/dev/null; then
-    sudo pacman -Runs $1 --noconfirm
+    paru -Runs $1 --noconfirm
   fi
 }
 
 install_if_not_exists() {
   if ! pacman -Qs $1 >/dev/null; then
-    sudo pacman -S $1 --noconfirm
+    paru -S $1 --noconfirm
   fi
 }
 
+sudo pacman -Syu --noconfirm
+sudo pacman -S paru --noconfirm
+
+# Install & remove packages from system
+cat $SCRIPT_DIR/remove.packages | while read package; do
+  remove_if_exists $package
+done
+
+cat $SCRIPT_DIR/install.packages | while read package; do
+  install_if_not_exists $package
+done
+
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
-#
 for config_path in $SCRIPT_DIR/config/*; do
   CONFIG_NAME=$(basename $config_path)
 
@@ -35,22 +46,13 @@ for config_path in $SCRIPT_DIR/config/*; do
   # done
 done
 
-sudo pacman -Syu --noconfirm
-
-# Install & remove packages from system
-cat $SCRIPT_DIR/remove.packages | while read package; do
-  remove_if_exists $package
-done
-
-cat $SCRIPT_DIR/install.packages | while read package; do
-  install_if_not_exists $package
-done
-
-set +e
-
 # Reload hyprland and shell
+echo "INFO: Applying noctalia templates"
 noctalia msg templates-apply
+
 sleep 0.5
+
+echo "INFO: Reloading hyprland configuration"
 hyprctl reload
 
 echo "INFO: Dotfiles have been successfully installed"
