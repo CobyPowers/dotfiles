@@ -19,6 +19,7 @@ dotfiles_usage() {
   echo -e "    diff\t\t→ Shows the differences between the current configuration backup"
   echo -e "    package\t\t→ Installs & removes system packages and updates the installed packages file"
   echo -e "    apply\t\t→ Copies dotfile configurations into ~/.config directory without updating the repository"
+  echo -e "    reload\t\t→ Reloads Hyprland and Noctalia, used after configurations are synced"
   # echo -e "    push\t\t→ Pushes commits to the remote repository"
   # echo -e "    pull\t\t→ Pulls commits from the remote repository"
 }
@@ -43,6 +44,9 @@ package)
   ;;
 apply)
   $BIN_DIR/dotfiles-apply "$@"
+  ;;
+reload)
+  $BIN_DIR/dotfiles-reload
   ;;
 # push)
 #   $BIN_DIR/dotfiles-push "$@"

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "INFO: Reloading Hyprland and Noctalia"
+
+noctalia msg templates-apply &>/dev/null
+sleep 0.5
+hyprctl reload &>/dev/null
+
+echo "INFO: Hyprland and Noctalia have been reloaded"

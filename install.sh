@@ -32,14 +32,6 @@ done
 $SCRIPT_DIR/bin/dotfiles_apply
 
 # Reload hyprland and shell
-echo "INFO: Applying noctalia templates"
-noctalia msg templates-apply
-
-# Ensure the templates have had enough time
-# to generate before reloading hyprland
-sleep 0.5
-
-echo "INFO: Reloading hyprland configuration"
-hyprctl reload
+$SCRIPT_DIR/bin/dotfiles_reload
 
 echo "INFO: Dotfiles have been successfully installed"
