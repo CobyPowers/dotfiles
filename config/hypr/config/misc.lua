@@ -1,6 +1,7 @@
 hl.config({
 	dwindle = {
 		preserve_split = true,
+		force_split = 2,
 	},
 	ecosystem = {
 		no_update_news = true,

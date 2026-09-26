@@ -153,6 +153,14 @@ hl.window_rule({
 	no_focus = true,
 })
 
+hl.window_rule({
+	name = "video-opacity",
+	match = {
+		title = "^.* - (YouTube|Twitch) — (LibreWolf|Firefox)$",
+	},
+	opacity = "1.0 override",
+})
+
 -- Noctalia layer rule
 hl.layer_rule({
 	name = "noctalia",

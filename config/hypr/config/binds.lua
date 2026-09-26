@@ -66,6 +66,7 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(launchCall .. FILE_MANAGER))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(launchCall .. EDITOR))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(launchCall .. CALCULATOR))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(launchCall .. BROWSER))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(launchCall .. BROWSER .. " --private-window"))
 
 ------------------
 ----- PANEL ------
