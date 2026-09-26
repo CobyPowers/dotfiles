@@ -13,25 +13,43 @@ fi
 dotfiles_usage() {
   echo "USAGE: ${BASH_SOURCE[0]} <command> [args...]"
   echo "COMMANDS:"
-  echo -e "    backup\t\t→ Backs up all preexisting configuration paths found in dotfiles"
-  echo -e "    commit\t\t→ Commits dotfile configuration changes"
-  echo -e "    package\t\t→ Installs & removes system packages and places them in the installed packages file"
-  echo -e "    push\t\t→ Pushes commits to the remote repository"
+  echo -e "    sync\t\t→ Pulls the dotfile repository and copies the new configurations to the ~/.config directory"
+  echo -e "    backup\t\t→ Backs up all tracked ~/.config directory configurations into the dotfile repository"
+  echo -e "    commit\t\t→ Commits dotfile configuration changes and pushes them to the remote repository"
+  echo -e "    diff\t\t→ Shows the differences between the current configuration backup"
+  echo -e "    package\t\t→ Installs & removes system packages and updates the installed packages file"
+  echo -e "    apply\t\t→ Copies dotfile configurations into ~/.config directory without updating the repository"
+  # echo -e "    push\t\t→ Pushes commits to the remote repository"
+  # echo -e "    pull\t\t→ Pulls commits from the remote repository"
 }
 
 case $CMD in
+sync)
+  $BIN_DIR/dotfiles-pull
+  $BIN_DIR/dotfiles-apply
+  ;;
 backup)
   $BIN_DIR/dotfiles-backup "$@"
   ;;
 commit)
   $BIN_DIR/dotfiles-commit "$@"
+  $BIN_DIR/dotfiles-push
+  ;;
+diff)
+  $BIN_DIR/dotfiles-diff
   ;;
 package)
   $BIN_DIR/dotfiles-package "$@"
   ;;
-push)
-  $BIN_DIR/dotfiles-push "$@"
+apply)
+  $BIN_DIR/dotfiles-apply "$@"
   ;;
+# push)
+#   $BIN_DIR/dotfiles-push "$@"
+#   ;;
+# pull)
+#   $BIN_DIR/dotfiles-pull "$@"
+#   ;;
 *)
   dotfiles_usage
   ;;

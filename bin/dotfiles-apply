@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e
+
+DOTFILES_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." &>/dev/null && pwd)
+
+for config_path in $DOTFILES_DIR/config/*; do
+  CONFIG_NAME=$(basename $config_path)
+
+  # Wipe current configs if they exist, otherwise create directories
+  if [ -d $HOME/.config/$CONFIG_NAME ]; then
+    rm -rf $HOME/.config/$CONFIG_NAME/{*,.*}
+  else
+    mkdir -p $HOME/.config/$CONFIG_NAME
+  fi
+
+  cp -r "$DOTFILES_DIR/config/$CONFIG_NAME" "$HOME/.config/."
+
+  # for file_path in $config_path/*; do
+  #   FILE_NAME=$(basename $file_path)
+  #   ln -s $HOME/.local/share/dotfiles/config/$CONFIG_NAME/$FILE_NAME $HOME/.config/$CONFIG_NAME/$FILE_NAME
+  # done
+done
+
+echo "INFO: Dotfile configurations have been applied"

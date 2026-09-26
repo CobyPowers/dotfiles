@@ -2,6 +2,8 @@
 
 set -e
 
+SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+
 remove_if_exists() {
   if pacman -Qs $1 >/dev/null; then
     paru -Runs $1 --noconfirm
@@ -26,30 +28,15 @@ cat $SCRIPT_DIR/install.packages | while read package; do
   install_if_not_exists $package
 done
 
-SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-
-for config_path in $SCRIPT_DIR/config/*; do
-  CONFIG_NAME=$(basename $config_path)
-
-  # Wipe current configs if they exist, otherwise create directories
-  if [ -d $HOME/.config/$CONFIG_NAME ]; then
-    rm -rf $HOME/.config/$CONFIG_NAME/{*,.*}
-  else
-    mkdir -p $HOME/.config/$CONFIG_NAME
-  fi
-
-  cp -r "$SCRIPT_DIR/config/$CONFIG_NAME" "$HOME/.config/."
-
-  # for file_path in $config_path/*; do
-  #   FILE_NAME=$(basename $file_path)
-  #   ln -s $HOME/.local/share/dotfiles/config/$CONFIG_NAME/$FILE_NAME $HOME/.config/$CONFIG_NAME/$FILE_NAME
-  # done
-done
+# Apply dotfile configurations
+$SCRIPT_DIR/bin/dotfiles_apply
 
 # Reload hyprland and shell
 echo "INFO: Applying noctalia templates"
 noctalia msg templates-apply
 
+# Ensure the templates have had enough time
+# to generate before reloading hyprland
 sleep 0.5
 
 echo "INFO: Reloading hyprland configuration"
