@@ -7,7 +7,6 @@ border = "on_primary"
 center = [ "weather", "clock", "widget" ]
 concave_edge_corners = true
 end = [ "tray", "media", "group:g1", "Text_Spacer", "group:g3", "session" ]
-font_scale = 0.89999998733401299
 font_weight = 400
 margin_edge = 0
 margin_ends = 0
@@ -109,12 +108,15 @@ offset_y = 80
 position = "bottom_center"
 position_vertical = "bottom_center"
 
+[plugin_settings."yuuto/arch-updater"]
+auto_check_hours = 2
+
 [plugins]
-enabled = [ "yuuto/arch-updater" ]
+enabled = [ "yuuto/arch-updater", "baizhu/asus-gpu-mode" ]
 
 [shell]
 clipboard_image_action_command = "swash --stdin --name \"swash-$(date +'%Y-%m-%d_%H:%M:%S').png\""
-font_family = "JetBrainsMono NF"
+font_family = "Iosevka"
 launch_apps_as_systemd_services = true
 polkit_agent = true
 settings_show_advanced = true
@@ -193,13 +195,13 @@ wallpaper_scheme = "m3-rainbow"
 directory = "/home/coby/Wallpapers"
 
     [wallpaper.default]
-    path = "/home/coby/Wallpapers/Gruvbox/Saso Tusar.jpg"
+    path = "/home/coby/Wallpapers/Stardew Valley (Fall).jpg"
 
     [wallpaper.last]
-    path = "/home/coby/Wallpapers/Gruvbox/Saso Tusar.jpg"
+    path = "/home/coby/Wallpapers/Stardew Valley (Fall).jpg"
 
     [wallpaper.monitors.HDMI-A-1]
-    path = "/home/coby/Wallpapers/Gruvbox/Saso Tusar.jpg"
+    path = "/home/coby/Wallpapers/Stardew Valley (Fall).jpg"
 
 [weather]
 refresh_minutes = 15
@@ -207,6 +209,7 @@ unit = "imperial"
 
 [widget.Text_Spacer]
 color = "secondary"
+enabled = false
 text = "|"
 type = "text"
 
@@ -221,6 +224,7 @@ width = 129
 
 [widget.battery]
 hide_when_full = true
+hide_when_plugged = true
 
 [widget.bluetooth]
 color = "secondary"

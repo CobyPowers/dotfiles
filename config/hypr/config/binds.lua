@@ -73,6 +73,7 @@ hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(launchCall .. BROWSER .. " --
 ------------------
 
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd(noctCall .. "settings-toggle"))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd(noctCall .. "panel-toggle baizhu/asus-gpu-mode:gpu-mode-panel"))
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd(noctCall .. "session lock"))
 
 hl.bind(mainMod .. " + Period", hl.dsp.exec_cmd(noctCall .. "panel-toggle launcher /emo"))
