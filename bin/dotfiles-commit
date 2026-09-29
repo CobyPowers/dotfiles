@@ -9,7 +9,7 @@ commit_usage() {
 }
 
 if [ $# -gt 0 ]; then
-  git -C $DOTFILES_DIR add ./config
+  git -C $DOTFILES_DIR add .
   git -C $DOTFILES_DIR commit -am "$*"
   echo "INFO: All config changes have been committed"
 else

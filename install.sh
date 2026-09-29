@@ -28,6 +28,12 @@ cat $SCRIPT_DIR/install.packages | while read package; do
   install_if_not_exists $package
 done
 
+if pacman -Qs flatpak >/dev/null; then
+  cat $SCRIPT_DIR/install.flatpak | while read package; do
+    flatpak install $package --noninteractive
+  done
+fi
+
 # Apply dotfile configurations
 $SCRIPT_DIR/bin/dotfiles_apply
 
