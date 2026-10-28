@@ -1,0 +1,9 @@
+[Added Associations]
+
+[Default Applications]
+inode/directory=org.gnome.Nautilus.desktop;
+text/plain=nvim.desktop;
+x-scheme-handler/http=librewolf.desktop;
+x-scheme-handler/https=librewolf.desktop;
+x-scheme-handler/unityhub=unityhub.desktop
+x-scheme-handler/discord=vesktop.desktop

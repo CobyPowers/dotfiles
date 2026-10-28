@@ -1,3 +1,4 @@
+deno
 flatpak
 libreoffice-fresh
 librewolf
@@ -7,8 +8,8 @@ neovim
 obsidian
 qemu-full
 steam
+tailscale
 ttc-iosevka
-ttf-jetbrains-mono-nerd
 unityhub
 vesktop
 virt-manager

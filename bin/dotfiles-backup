@@ -34,7 +34,7 @@ backup_all() {
 
 backup_new() {
   if [ -n "$CONFIG_NAME" ]; then
-    if [ -d "$HOME/.config/$CONFIG_NAME" ]; then
+    if [ -e "$HOME/.config/$CONFIG_NAME" ]; then
       rm -rf $DOTFILES_DIR/config/$CONFIG_NAME/*
       cp -r "$HOME/.config/$CONFIG_NAME" "$DOTFILES_DIR/config/."
     else

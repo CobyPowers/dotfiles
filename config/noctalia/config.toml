@@ -2,22 +2,23 @@
 ui_scale = 1.2
 
 [bar.default]
-background_opacity = 0.79999998211860657
+background_opacity = 0.4999999888241291
 border = "on_primary"
-center = [ "weather", "clock", "widget" ]
+center = [ "weather", "clock" ]
 concave_edge_corners = true
 end = [ "tray", "media", "group:g1", "Text_Spacer", "group:g3", "session" ]
+font_scale = 0.89999998733401299
 font_weight = 400
 margin_edge = 0
 margin_ends = 0
-padding = 24
+padding = 16
 radius_bottom_left = 32
 radius_bottom_right = 32
-radius_top_left = 12
-radius_top_right = 12
+radius_top_left = 0
+radius_top_right = 0
 scale = 1.1000000000000001
-start = [ "control-center", "workspaces", "audio_visualizer" ]
-thickness = 40
+start = [ "control-center", "launcher", "workspaces", "audio_visualizer" ]
+thickness = 38
 widget_spacing = 16
 
     [[bar.default.capsule_group]]
@@ -25,7 +26,7 @@ widget_spacing = 16
     accordion_direction = "end"
     border = ""
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g1"
     members = [ "temp", "sysmon_2", "sysmon_3" ]
     opacity = 0.0
@@ -38,7 +39,7 @@ widget_spacing = 16
     accordion_direction = "end"
     border = ""
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     foreground = "secondary"
     id = "g3"
     members = [ "volume", "bluetooth", "network", "battery", "privacy" ]
@@ -62,12 +63,44 @@ auto_locate = true
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-A-1" ]
+widget_order = [
+    "lockscreen-login-box@FALLBACK",
+    "lockscreen-login-box@eDP-2",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-login-box@HDMI-A-1"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@FALLBACK"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "FALLBACK"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@FALLBACK".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
     box_height = 196.0
@@ -81,7 +114,61 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 640.0
+    cy = 618.0
+    output = "eDP-1"
+    placement_height = 800.0
+    placement_width = 1280.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 768.0
+    cy = 741.60003662109375
+    output = "eDP-2"
+    placement_height = 960.0
+    placement_width = 1536.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-2".settings]
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -97,26 +184,26 @@ widget_order = [ "lockscreen-login-box@HDMI-A-1" ]
         show_weather = true
 
 [notification]
-background_opacity = 0.69999998435378075
+background_opacity = 0.4999999888241291
 max_visible = 3
 offset_x = 24
 offset_y = 24
 
 [osd]
-background_opacity = 0.69999998435378075
+background_opacity = 0.4999999888241291
 offset_y = 80
 position = "bottom_center"
 position_vertical = "bottom_center"
 
 [plugin_settings."yuuto/arch-updater"]
-auto_check_hours = 2
+auto_check_hours = 72
 
 [plugins]
-enabled = [ "yuuto/arch-updater", "baizhu/asus-gpu-mode" ]
+enabled = [ "baizhu/asus-gpu-mode", "riversyx/noctaproton-vpn" ]
 
 [shell]
 clipboard_image_action_command = "swash --stdin --name \"swash-$(date +'%Y-%m-%d_%H:%M:%S').png\""
-font_family = "Iosevka"
+font_family = "JetBrainsMono Nerd Font"
 launch_apps_as_systemd_services = true
 polkit_agent = true
 settings_show_advanced = true
@@ -138,6 +225,7 @@ settings_show_advanced = true
 
     [shell.screen_corners]
     enabled = true
+    size = 1
 
     [shell.screenshot]
     copy_to_clipboard = false
@@ -182,7 +270,7 @@ gpu_temp_critical_threshold = 100
 
 [theme]
 builtin = "Gruvbox"
-community_palette = "Everforest Material"
+community_palette = "Norman"
 mode = "dark"
 source = "wallpaper"
 wallpaper_scheme = "m3-rainbow"
@@ -195,27 +283,29 @@ wallpaper_scheme = "m3-rainbow"
 directory = "/home/coby/Wallpapers"
 
     [wallpaper.default]
-    path = "/home/coby/Wallpapers/Stardew Valley (Fall).jpg"
+    path = "/home/coby/Wallpapers/Nord/Watchtower.png"
 
     [wallpaper.last]
-    path = "/home/coby/Wallpapers/Stardew Valley (Fall).jpg"
+    path = "/home/coby/Wallpapers/Nord/Watchtower.png"
 
     [wallpaper.monitors.HDMI-A-1]
-    path = "/home/coby/Wallpapers/Stardew Valley (Fall).jpg"
+    path = "/home/coby/Wallpapers/Nord/Watchtower.png"
+
+    [wallpaper.monitors.eDP-2]
+    path = "/home/coby/Wallpapers/Gruvbox/Clay Banks.jpg"
 
 [weather]
 refresh_minutes = 15
 unit = "imperial"
 
 [widget.Text_Spacer]
-color = "secondary"
-enabled = false
-text = "|"
+color = "on_surface_variant"
+text = ""
 type = "text"
 
 [widget.audio_visualizer]
 bands = 128
-capsule_fill = "surface_variant"
+capsule_fill = "surface_container"
 capsule_opacity = 0.70000000000000007
 capsule_padding = 12
 capsule_radius = 8
@@ -223,12 +313,14 @@ color_2 = "secondary"
 width = 129
 
 [widget.battery]
+color = "primary"
 hide_when_full = true
 hide_when_plugged = true
+icon_color = "primary"
 
 [widget.bluetooth]
-color = "secondary"
-icon_color = "secondary"
+color = "primary"
+icon_color = "primary"
 
 [widget.clock]
 anchor = true
@@ -242,18 +334,20 @@ tooltip_format = "{:%I:%M %p on %D}"
     right = "panel-toggle control-center home"
 
 [widget.control-center]
-capsule_opacity = 0.70000000000000007
+capsule_border = "primary"
+capsule_opacity = 0.0
+capsule_padding = 5
 capsule_radius = 8
 color = "primary"
 glyph = "grid-dots"
 
 [widget.launcher]
-capsule = true
-capsule_fill = "surface_variant"
+capsule_fill = "surface_container"
 capsule_opacity = 0.70000000000000007
 capsule_padding = 8
 capsule_radius = 8
 color = "primary"
+enabled = false
 scale = 0.90000000000000002
 
 [widget.media]
@@ -263,8 +357,8 @@ hide_when_no_media = true
 title_scroll = "on_hover"
 
 [widget.network]
-color = "tertiary"
-icon_color = "tertiary"
+color = "primary"
+icon_color = "primary"
 show_label = false
 
 [widget.notifications]
@@ -274,9 +368,9 @@ color = "secondary"
 hide_inactive = true
 
 [widget.session]
-capsule_fill = "surface_variant"
+capsule_border = "error"
 capsule_opacity = 0.70000000000000007
-capsule_padding = 8
+capsule_padding = 7
 capsule_radius = 8
 color = "error"
 scale = 0.90000000000000002
@@ -290,7 +384,7 @@ type = "spacer"
 [widget.sysmon_2]
 color = "secondary"
 glyph = "gpu-usage"
-show_value = false
+show_value = true
 stat = "gpu_temp"
 type = "sysmon"
 
@@ -307,7 +401,7 @@ show_value = false
 
 [widget.tray]
 capsule = false
-capsule_fill = "surface_variant"
+capsule_fill = "surface_container"
 capsule_opacity = 0.59999999999999998
 capsule_radius = 8
 drawer = true
@@ -324,17 +418,10 @@ scale = 0.90000000000000002
 show_condition = false
 show_temperature = false
 
-[widget.widget]
-color = "secondary"
-hide_on_empty = true
-icon_color = "secondary"
-show_count = false
-type = "yuuto/arch-updater:widget"
-
 [widget.workspaces]
 active_pill_size = 2.5
 capsule = false
-capsule_fill = "surface_variant"
+capsule_fill = "surface_container"
 capsule_opacity = 0.70000000000000007
 capsule_padding = 8
 capsule_radius = 8

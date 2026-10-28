@@ -11,13 +11,13 @@ function M.setup()
     base06 = '#e2e2e2',
     base07 = '#e2e2e2',
     base08 = '#ffb4ab',
-    base09 = '#a0cfd3',
-    base0A = '#baccb2',
-    base0B = '#93d787',
-    base0C = '#a0cfd3',
-    base0D = '#93d787',
-    base0E = '#baccb2',
-    base0F = '#d6e8ce',
+    base09 = '#d6bee4',
+    base0A = '#bbc7db',
+    base0B = '#9ecaff',
+    base0C = '#d6bee4',
+    base0D = '#9ecaff',
+    base0E = '#bbc7db',
+    base0F = '#d6e3f7',
   })
 
   local hi = function(group, opts)
@@ -29,24 +29,24 @@ function M.setup()
   hi('TelescopeBorder',         { fg = '#919191',             bg = '#131313' })
   hi('TelescopePromptNormal',   { fg = '#e2e2e2',          bg = '#131313' })
   hi('TelescopePromptBorder',   { fg = '#919191',             bg = '#131313' })
-  hi('TelescopePromptPrefix',   { fg = '#93d787',             bg = '#131313' })
+  hi('TelescopePromptPrefix',   { fg = '#9ecaff',             bg = '#131313' })
   hi('TelescopePromptCounter',  { fg = '#c6c6c6',  bg = '#131313' })
-  hi('TelescopePromptTitle',    { fg = '#131313',             bg = '#93d787' })
-  hi('TelescopePreviewTitle',   { fg = '#131313',             bg = '#baccb2' })
-  hi('TelescopeResultsTitle',   { fg = '#131313',             bg = '#a0cfd3' })
+  hi('TelescopePromptTitle',    { fg = '#131313',             bg = '#9ecaff' })
+  hi('TelescopePreviewTitle',   { fg = '#131313',             bg = '#bbc7db' })
+  hi('TelescopeResultsTitle',   { fg = '#131313',             bg = '#d6bee4' })
   hi('TelescopeSelection',      { fg = '#e2e2e2',          bg = '#2a2a2a' })
-  hi('TelescopeSelectionCaret', { fg = '#93d787',             bg = '#2a2a2a' })
-  hi('TelescopeMatching',       { fg = '#93d787',             bold = true })
+  hi('TelescopeSelectionCaret', { fg = '#9ecaff',             bg = '#2a2a2a' })
+  hi('TelescopeMatching',       { fg = '#9ecaff',             bold = true })
 
   -- mini.pick
   hi('MiniPickNormal',         { fg = '#e2e2e2',          bg = '#131313' })
   hi('MiniPickBorder',         { fg = '#919191',             bg = '#131313' })
   hi('MiniPickPrompt',   { fg = '#e2e2e2',          bg = '#131313' })
-  hi('MiniPickPromptPrefix',   { fg = '#93d787',             bg = '#131313' })
-  hi('MiniPickBorderText',    { fg = '#131313',             bg = '#93d787' })
+  hi('MiniPickPromptPrefix',   { fg = '#9ecaff',             bg = '#131313' })
+  hi('MiniPickBorderText',    { fg = '#131313',             bg = '#9ecaff' })
   hi('MiniPickMatchCurrent',      { fg = '#e2e2e2',          bg = '#2a2a2a' })
-  hi('MiniPickPromptCaret', { fg = '#93d787',             bg = '#2a2a2a' })
-  hi('MiniPickMatchRanges',       { fg = '#93d787',             bold = true })
+  hi('MiniPickPromptCaret', { fg = '#9ecaff',             bg = '#2a2a2a' })
+  hi('MiniPickMatchRanges',       { fg = '#9ecaff',             bold = true })
 end
 
 -- Register a signal handler for SIGUSR1 (matugen updates).
